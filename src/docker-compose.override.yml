@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - '5340:80'
+  
+  npgdata:
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Pass@word
+      - PGDATA:/tmp
+    ports:
+      - '5432:5432'
+    volumes:
+      - npgdata:/var/lib/postgresql/data
+
+  projectmanager-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=${PROJECTMANAGER_DB:-Server=npgdata;Port=5432;Database=ProjectManagerDb;User Id=admin;Password=Pass@word}
+      - Serilog__SeqServerUrl=${SEQ:-http://seq}
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - UseLoadTest=${USE_LOADTEST:-False}
+    ports:
+      - '5101:80'
+        
+volumes:
+  npgdata:
+    external: false

@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>d8fbff65-a84b-41e5-950a-7089aae218c7</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ActionResults\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Infrastructure\MediatR\" />
+    <Folder Include="ModelBinders\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="3.1.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="3.1.4" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="CsvHelper" Version="17.0.1" />
+    <PackageReference Include="MassTransit.Autofac" Version="7.0.4" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Polly" Version="7.2.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="4.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectManager.Commands\ProjectManager.Commands.csproj" />
+    <ProjectReference Include="..\ProjectManager.Core\ProjectManager.Core.csproj" />
+    <ProjectReference Include="..\ProjectManager.Infrastructure.Persistence.PostgreSQL\ProjectManager.Infrastructure.Persistence.PostgreSQL.csproj" />
+    <ProjectReference Include="..\ProjectManager.Queries\ProjectManager.Queries.csproj" />
+  </ItemGroup>
+
+</Project>

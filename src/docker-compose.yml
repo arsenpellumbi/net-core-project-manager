@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  seq:
+    image: datalust/seq:latest
+
+  npgdata:
+    image: postgres:12.2-alpine
+
+  projectmanager-api:
+    image: ${DOCKER_REGISTRY-}projectmanagerapi
+    build:
+      context: .
+      dockerfile: ProjectManager/ProjectManager.API/Dockerfile
+    depends_on:
+      - npgdata
