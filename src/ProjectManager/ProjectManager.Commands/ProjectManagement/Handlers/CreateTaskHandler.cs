@@ -44,7 +44,8 @@ namespace ProjectManager.Commands.ProjectManagement.Handlers
                 Title = request.Title,
                 Description = request.Description,
                 Type = request.Type,
-                ProjectId = request.ProjectId
+                ProjectId = request.ProjectId,
+                CreatedDate = DateTime.UtcNow
             };
 
             _logger.LogInformation("----- Creating Task - Task: {@Task}", projectTask);

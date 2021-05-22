@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
 
 namespace ProjectManager.Commands.ProjectManagement.Handlers
 {
@@ -34,6 +35,7 @@ namespace ProjectManager.Commands.ProjectManagement.Handlers
             projectTask.Title = request.Title;
             projectTask.Description = request.Description;
             projectTask.Type = request.Type;
+            projectTask.ModifiedDate = DateTime.UtcNow;
 
             _logger.LogInformation("----- Updating Task - Task: {@Task}", projectTask);
 

@@ -34,7 +34,8 @@ namespace ProjectManager.Commands.ProjectManagement.Handlers
             {
                 Id = _idGenerator.NewId(),
                 Title = request.Title,
-                Description = request.Description
+                Description = request.Description,
+                CreatedDate = DateTime.UtcNow
             };
 
             _logger.LogInformation("----- Creating Project - Project: {@Project}",

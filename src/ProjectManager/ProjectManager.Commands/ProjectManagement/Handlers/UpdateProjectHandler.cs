@@ -34,6 +34,7 @@ namespace ProjectManager.Commands.ProjectManagement.Handlers
 
             project.Title = request.Title;
             project.Description = request.Description;
+            project.ModifiedDate = DateTime.UtcNow;
 
             _logger.LogInformation("----- Updating Project - Project: {@Project}", project);
 
